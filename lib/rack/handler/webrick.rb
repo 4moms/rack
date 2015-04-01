@@ -28,7 +28,7 @@ module Rack
 
         options[:BindAddress] = options.delete(:Host) || default_host
         options[:Port] ||= 8080
-        options[:OutputBufferSize] = 5
+        options[:OutputBufferSize] = 65536
         @server = ::WEBrick::HTTPServer.new(options)
         @server.mount "/", Rack::Handler::WEBrick, app
         yield @server  if block_given?
